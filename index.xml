@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <h1>RAWGraphs</h1>
+  <object type="image/svg+xml" data="https://arianacotrone.github.io/infovis/viz.svg">
+  </object>
+  <object data="image/svg+xml" type="https://arianacotrone.github.io/infovis/viz.svg"></object>
+</body>
+</html>
