@@ -1,21 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+    <meta charset="UTF-8">
+    <title>Latidos y Movimiento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            text-align: center;
+            margin: 0;
+            padding: 40px;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 36px;
+        }
+        h2 {
+            color: #34495e;
+            font-weight: normal;
+        }
+        img {
+            margin-top: 30px;
+            max-width: 80%;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
-  <h1>RAWGraphs</h1>
-  <object type="image/svg+xml" data="https://arianacotrone.github.io/infovis/viz.svg"> </object>
 
-  <h1>Flourish FN</h1>
-  <div class="flourish-embed flourish-chart" data-src="visualisation/27939026">
-    <script src="https://public.flourish.studio/resources/embed.js"></script>
-    </div>
+<div class="container">
+    <h1>💓 Latidos y Movimiento</h1>
+    <h2>¿Cómo cambia mi frecuencia cardíaca según mi nivel de actividad?</h2>
 
-  <h1>Toppings en pizza</h1>
-  <iframe title="Men vs Women: Pizza Topping Choices" aria-label="Range Plot" id="datawrapper-chart-902ta" src="https://datawrapper.dwcdn.net/902ta/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="432" data-external="1"></iframe><script type="text/javascript">window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}});</script>
+    <img src="grafico_fc.png" alt="Gráfico de frecuencia cardíaca">
+
+    <p>
+        Este gráfico muestra cómo varía mi frecuencia cardíaca promedio
+        en función de mi actividad diaria: descanso, gimnasio y deporte.
+    </p>
+
+    <p>
+        Se observa un aumento en la frecuencia cardíaca durante los días
+        de actividad física, lo que refleja el impacto del ejercicio en el cuerpo.
+    </p>
+</div>
 
 </body>
 </html>
