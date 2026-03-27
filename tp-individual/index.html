@@ -169,7 +169,11 @@
           <script src="https://public.flourish.studio/resources/embed.js"></script>
         </div>
       </div>
+      <div class="chart-card">
+        <img src="actividad semanal.svg" alt="Distribución de actividad semanal" style="width: 100%; height: auto; display: block;">
+      </div>
     </article>
+
 
     <article class="viz-section">
       <div class="section-num">02</div>
@@ -201,9 +205,35 @@
         </div>
       </div>
     </article>
-    
+
     <article class="viz-section">
       <div class="section-num">04</div>
+      <h2>Foco por Disciplina</h2>
+      <p class="description">
+        Análisis comparativo de la distribución de sesiones. Mientras que el gimnasio se centra en los días hábiles principalmente, el deporte (fútbol) se concentra fuertemente los fines de semana.
+      </p>
+      
+      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+        
+        <div class="chart-card" style="flex: 1; min-width: 300px;">
+          <iframe title="Días gimnasio 🏋🏻‍♀️" aria-label="Pie Chart" id="datawrapper-chart-kc5KO" src="https://datawrapper.dwcdn.net/kc5KO/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="412" data-external="1"></iframe>
+        </div>
+
+        <div class="chart-card" style="flex: 1; min-width: 300px;">
+          <iframe title="Días deporte - mayormente fútbol" aria-label="Pie Chart" id="datawrapper-chart-2UhlU" src="https://datawrapper.dwcdn.net/2UhlU/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="409" data-external="1"></iframe>
+        </div>
+
+      </div>
+      
+      <script type="text/javascript">
+        window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}});
+      </script>
+    </article>
+
+    
+    
+    <article class="viz-section">
+      <div class="section-num">05</div>
       <h2>La persistencia del registro</h2>
       <p class="description">
         Los huecos y picos, estimo, son resultado de la fricción entre el agua de la pileta y el sensor del Apple Watch.
@@ -239,11 +269,8 @@
       </div>
     </article>
 
-   
-
-    
-
   </main>
+    
 
   <footer>
     <p>Visualización de Datos · Presentación Final · 2026</p>
