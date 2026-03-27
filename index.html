@@ -2,70 +2,181 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Latidos y Movimiento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Biometría y Rendimiento | 2024-2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --accent-teal: #2A9D8F;
+            --accent-orange: #F4A261;
+            --accent-red: #E63946;
+            --text-main: #2d3436;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            text-align: center;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             margin: 0;
-            padding: 40px;
+            padding: 20px;
+            line-height: 1.6;
         }
-        h1 {
-            color: #2c3e50;
-            font-size: 36px;
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 40px;
         }
-        h2 {
-            color: #34495e;
-            font-weight: normal;
-        }
-        img {
-            margin-top: 30px;
-            max-width: 80%;
-        }
+
+        h1 { font-weight: 600; margin-bottom: 10px; color: #1a1a1a; }
+        .subtitle { color: #666; font-size: 1.1em; }
+
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
-            display: inline-block;
+            max-width: 1100px;
+            margin: 0 auto;
         }
-         .graph {
-            width: 80%;
-            max-width: 800px;
-            margin: 30px auto;
-            display: block;
-            border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+
+        .chart-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+            position: relative;
         }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .info-btn {
+            background: #eee;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .info-btn:hover { background: var(--accent-teal); color: white; }
+
+        /* Estilos Pop-up/Nota */
+        .annotation {
+            display: none;
+            background: #f1f1f1;
+            border-left: 4px solid var(--accent-teal);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .flourish-embed, .tableauPlaceholder {
+            width: 100% !important;
+            margin: 0 auto;
+        }
+
+        footer { text-align: center; padding: 40px; color: #999; font-size: 0.8em; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>💓 El pulso del movimiento</h1>
-    <h2>Relación entre actividad física y frecuencia cardíaca</h2>
+    <header>
+        <h1>Monitoreo de Entrenamiento y Salud</h1>
+        <p class="subtitle">Análisis técnico de registros Apple Watch y composición de actividad semanal.</p>
+    </header>
 
-    <img class="graph" src="viz%20(2).svg" alt="Gráfico 1">
-
-    <img class="graph" src="imagen.png" alt="Gráfico 2">
-
-    <img class="graph" src="imagen2.png" alt="Gráfico 3">
-
-    <p>
-        El análisis muestra que la frecuencia cardíaca promedio no es necesariamente mayor en días de entrenamiento. 
-
-    </p>
-
-    <p>        
-        Algunos días de descanso presentan frecuencias más altas,  sera fatiga acumulada o mucho movimiento en el dia? 
+    <div class="chart-card">
+        <div class="chart-header">
+            <h2>Evolución de registros Apple Watch</h2>
+            <button class="info-btn" onclick="toggleNote('note1')">?</button>
+        </div>
         
-    </p>
+        <div id="note1" class="annotation">
+            <strong>Nota Técnica:</strong> Se observan picos atípicos en las semanas 46, 54 y 61 correlacionados con sesiones de natación. La interferencia del agua en el sensor óptico genera sobreestimación calórica. En la semana 61, el leve aumento en BPM refleja la respuesta fisiológica post-donación de sangre.
+        </div>
 
-    <p>
-        Condicionara mi frecuencia cardiaca durante el dia a mi decision sobre ir al gimnasio? .
-    </p>
+        <div class='tableauPlaceholder' id='viz1774634145691' style='position: relative'>
+            <noscript><a href='#'><img alt='Evolución' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ev&#47;EvolucionderegistrosenappleWatch&#47;Hoja7&#47;1_rss.png' style='border: none' /></a></noscript>
+            <object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='EvolucionderegistrosenappleWatch&#47;Hoja7' />
+                <param name='tabs' value='no' /><param name='toolbar' value='yes' />
+                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ev&#47;EvolucionderegistrosenappleWatch&#47;Hoja7&#47;1.png' /> 
+                <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' /><param name='language' value='es-ES' />
+                <param name='filter' value='publish=yes' />
+            </object>
+        </div>
+    </div>
+
+    <div class="chart-card">
+        <div class="chart-header">
+            <h2>Distribución de Actividad Semanal</h2>
+            <button class="info-btn" onclick="toggleNote('note2')">?</button>
+        </div>
+
+        <div id="note2" class="annotation">
+            <strong>Análisis de Hábitos:</strong> El gráfico muestra la consolidación de la rutina entre Gimnasio (Naranja) y Deporte (Verde). Se destaca la carga recreativa los Domingos y la consistencia de fuerza los Lunes.
+        </div>
+
+        <div class="flourish-embed flourish-chart" data-src="visualisation/28235722">
+            <script src="https://public.flourish.studio/resources/embed.js"></script>
+        </div>
+    </div>
+
+    <div class="chart-card">
+        <div class="chart-header">
+            <h2>Matriz de Intensidad</h2>
+            <button class="info-btn" onclick="toggleNote('note3')">?</button>
+        </div>
+
+        <div id="note3" class="annotation">
+            Visualización de la frecuencia de actividad normalizada por mes y día.
+        </div>
+
+        <div class="flourish-embed flourish-chart" data-src="visualisation/28253778">
+            <script src="https://public.flourish.studio/resources/embed.js"></script>
+        </div>
+    </div>
+
+    <footer>
+        <p>Dashboard generado para presentación final | Ingeniera en Sistemas | 2026</p>
+    </footer>
 </div>
+
+<script>
+    // Función para mostrar/ocultar anotaciones
+    function toggleNote(id) {
+        var note = document.getElementById(id);
+        if (note.style.display === "block") {
+            note.style.display = "none";
+        } else {
+            note.style.display = "block";
+        }
+    }
+
+    // Script de Tableau
+    var divElement = document.getElementById('viz1774634145691');
+    var vizElement = divElement.getElementsByTagName('object')[0];
+    vizElement.style.width='100%';
+    vizElement.style.height=(divElement.offsetWidth*0.55)+'px';
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
 
 </body>
 </html>
