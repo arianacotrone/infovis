@@ -3,179 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análisis de Biometría y Rendimiento | 2024-2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Bio-Performance Dashboard | Engineering Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --accent-teal: #2A9D8F;
-            --accent-orange: #F4A261;
-            --accent-red: #E63946;
-            --text-main: #2d3436;
+            --bg: #0d1117;
+            --card: #161b22;
+            --accent: #2A9D8F;
+            --text: #c9d1d9;
+            --dim-text: #8b949e;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0; padding: 40px 20px;
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        header {
-            text-align: center;
-            padding: 40px 0;
-            border-bottom: 2px solid #eee;
-            margin-bottom: 40px;
+        header { width: 100%; max-width: 1200px; margin-bottom: 60px; }
+        .hero-title { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin: 0; color: #fff; }
+        .hero-meta { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.9rem; }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
         }
 
-        h1 { font-weight: 600; margin-bottom: 10px; color: #1a1a1a; }
-        .subtitle { color: #666; font-size: 1.1em; }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .chart-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 50px;
+        .chart-container {
+            background: var(--card);
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 30px;
             position: relative;
+            transition: transform 0.3s ease;
         }
 
-        .chart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+        /* Pop-up de Insight */
+        .insight-badge {
+            position: absolute;
+            top: -15px; right: 20px;
+            background: var(--accent);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold; font-size: 0.75rem;
+            cursor: help;
+            box-shadow: 0 4px 10px rgba(42, 157, 143, 0.3);
         }
 
-        .info-btn {
-            background: #eee;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .info-btn:hover { background: var(--accent-teal); color: white; }
-
-        /* Estilos Pop-up/Nota */
-        .annotation {
+        .insight-popup {
             display: none;
-            background: #f1f1f1;
-            border-left: 4px solid var(--accent-teal);
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 4px;
-            font-size: 0.95em;
+            background: #21262d;
+            border: 1px solid var(--accent);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #b1bac4;
         }
 
-        .flourish-embed, .tableauPlaceholder {
-            width: 100% !important;
-            margin: 0 auto;
+        .section-sep {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #30363d;
         }
 
-        footer { text-align: center; padding: 40px; color: #999; font-size: 0.8em; }
+        footer { margin-top: 100px; font-family: 'JetBrains Mono', monospace; color: var(--dim-text); }
+        
+        /* Ajustes de Embeds */
+        .flourish-embed, .tableauPlaceholder { width: 100% !important; border-radius: 8px; overflow: hidden; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Monitoreo de Entrenamiento y Salud</h1>
-        <p class="subtitle">Análisis técnico de registros Apple Watch y composición de actividad semanal.</p>
-    </header>
+<header>
+    <div class="hero-meta">// SYSTEM_STATUS: OPERATIONAL | RECONSTRUCTION_PERIOD: 2024-2026</div>
+    <h1 class="hero-title">Biometric Engineering Analysis</h1>
+</header>
 
-    <div class="chart-card">
-        <div class="chart-header">
-            <h2>Evolución de registros Apple Watch</h2>
-            <button class="info-btn" onclick="toggleNote('note1')">?</button>
-        </div>
+<div class="dashboard-grid">
+
+    <div class="chart-container">
+        <div class="insight-badge" onclick="togglePopup('p1')">VIEW_TECHNICAL_INSIGHTS</div>
         
-        <div id="note1" class="annotation">
-            <strong>Nota Técnica:</strong> Se observan picos atípicos en las semanas 46, 54 y 61 correlacionados con sesiones de natación. La interferencia del agua en el sensor óptico genera sobreestimación calórica. En la semana 61, el leve aumento en BPM refleja la respuesta fisiológica post-donación de sangre.
-        </div>
-
-        <div class='tableauPlaceholder' id='viz1774634145691' style='position: relative'>
-            <noscript><a href='#'><img alt='Evolución' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ev&#47;EvolucionderegistrosenappleWatch&#47;Hoja7&#47;1_rss.png' style='border: none' /></a></noscript>
+        <div class='tableauPlaceholder' id='viz1774634145691'>
             <object class='tableauViz' style='display:none;'>
                 <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-                <param name='embed_code_version' value='3' /> 
-                <param name='site_root' value='' />
                 <param name='name' value='EvolucionderegistrosenappleWatch&#47;Hoja7' />
-                <param name='tabs' value='no' /><param name='toolbar' value='yes' />
-                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ev&#47;EvolucionderegistrosenappleWatch&#47;Hoja7&#47;1.png' /> 
-                <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' /><param name='language' value='es-ES' />
-                <param name='filter' value='publish=yes' />
+                <param name='toolbar' value='yes' /><param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' /><param name='display_count' value='yes' />
+                <param name='language' value='es-ES' /><param name='filter' value='publish=yes' />
             </object>
+        </div>
+
+        <div id="p1" class="insight-popup">
+            <strong>ANALYSIS_LOG:</strong><br>
+            • <b>Anomalía de Sensor (Semanas 46, 54, 61):</b> Los picos de consumo calórico coinciden con sesiones de natación. El ruido óptico por refracción del agua invalida los registros crudos.<br>
+            • <b>Respuesta Cardiovascular:</b> Estabilidad en BPM promedio excepto en la ventana post-donación de sangre (Semana 61), donde se aprecia una compensación hemodinámica.
         </div>
     </div>
 
-    <div class="chart-card">
-        <div class="chart-header">
-            <h2>Distribución de Actividad Semanal</h2>
-            <button class="info-btn" onclick="toggleNote('note2')">?</button>
+    <div class="chart-container">
+        <div class="insight-badge" onclick="togglePopup('p2')">ACTIVITY_DISTRIBUTION_LOG</div>
+        
+        <div class='tableauPlaceholder' id='viz1774639847143'>
+            <object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='name' value='Dist_deact_semanal&#47;Hoja1' />
+                <param name='toolbar' value='yes' />
+            </object>
         </div>
 
-        <div id="note2" class="annotation">
-            <strong>Análisis de Hábitos:</strong> El gráfico muestra la consolidación de la rutina entre Gimnasio (Naranja) y Deporte (Verde). Se destaca la carga recreativa los Domingos y la consistencia de fuerza los Lunes.
+        <div id="p2" class="insight-popup">
+            <strong>DISTRIBUTION_LOG:</strong><br>
+            El análisis por día de la semana revela una especialización funcional: <b>Lunes</b> como pilar de gimnasio y <b>Domingos</b> dominados por deporte recreativo/fútbol. La consistencia es la métrica clave de este periodo.
         </div>
+    </div>
 
+    <div class="chart-container">
+        <div class="insight-badge" onclick="togglePopup('p3')">ESTACIONALIDAD_LOG</div>
         <div class="flourish-embed flourish-chart" data-src="visualisation/28235722">
             <script src="https://public.flourish.studio/resources/embed.js"></script>
         </div>
+        <div id="p3" class="insight-popup">
+            Mapa de calor de actividad acumulada. Permite identificar los meses de "reconstrucción" donde el volumen de entrenamiento escaló progresivamente.
+        </div>
     </div>
 
-    <div class="chart-card">
-        <div class="chart-header">
-            <h2>Matriz de Intensidad</h2>
-            <button class="info-btn" onclick="toggleNote('note3')">?</button>
-        </div>
-
-        <div id="note3" class="annotation">
-            Visualización de la frecuencia de actividad normalizada por mes y día.
-        </div>
-
+    <div class="chart-container">
+        <div class="insight-badge" onclick="togglePopup('p4')">MONTHLY_BREAKDOWN</div>
         <div class="flourish-embed flourish-chart" data-src="visualisation/28253778">
             <script src="https://public.flourish.studio/resources/embed.js"></script>
         </div>
+        <div id="p4" class="insight-popup">
+            Comparativa mensual de las 3 dimensiones principales: Fuerza (Gym), Aeróbico (Deporte) y Recuperación.
+        </div>
     </div>
 
-    <footer>
-        <p>Dashboard generado para presentación final | Ingeniera en Sistemas | 2026</p>
-    </footer>
 </div>
 
+<footer>
+    // END_OF_REPORT | ARGENTINA_2026 | ENG_DATA_SCIENCE_VISUALIZATION
+</footer>
+
 <script>
-    // Función para mostrar/ocultar anotaciones
-    function toggleNote(id) {
-        var note = document.getElementById(id);
-        if (note.style.display === "block") {
-            note.style.display = "none";
-        } else {
-            note.style.display = "block";
-        }
+    function togglePopup(id) {
+        var p = document.getElementById(id);
+        p.style.display = (p.style.display === "block") ? "none" : "block";
     }
 
-    // Script de Tableau
-    var divElement = document.getElementById('viz1774634145691');
-    var vizElement = divElement.getElementsByTagName('object')[0];
-    vizElement.style.width='100%';
-    vizElement.style.height=(divElement.offsetWidth*0.55)+'px';
-    var scriptElement = document.createElement('script');
-    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    // Scripts de carga de Tableau
+    function loadTableau(id) {
+        var divElement = document.getElementById(id);
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        vizElement.style.width='100%'; vizElement.style.height=(divElement.offsetWidth*0.65)+'px';
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    }
+
+    loadTableau('viz1774634145691');
+    loadTableau('viz1774639847143');
 </script>
 
 </body>
