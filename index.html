@@ -1,176 +1,261 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💓 El pulso del movimiento</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #fff5f7; /* Un blanco con un toque apenas rosado/cálido */
-            --card: #ffffff;
-            --accent: #ffb7c5; /* Rosa pastel o el Teal que veníamos usando */
-            --text: #4a4a4a;
-        }
-        body {
-            font-family: 'Lora', serif; /* Texto principal elegante */
-        }
-        .hero-title, .insight-badge {
-            font-family: 'Quicksand', sans-serif; /* Títulos y botones cute */
-            font-weight: 700;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💓 El pulso del movimiento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-        header { width: 100%; max-width: 1200px; margin-bottom: 60px; }
-        .hero-title { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin: 0; color: #fff; }
-        .hero-meta { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.9rem; }
+  <style>
+    :root {
+      --bg:          #fffcfd;
+      --card:        #ffffff;
+      --accent-teal: #2A9D8F;
+      --accent-org:  #F4A261;
+      --accent-pink: #ffb7c5;
+      --text:        #4a4a4a;
+      --text-light:  #9b9b9b;
+      --border:      rgba(255, 183, 197, 0.2);
+      --shadow:      rgba(42, 157, 143, 0.05);
+    }
 
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            width: 100%;
-            max-width: 1200px;
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-        .chart-container {
-            background: var(--card);
-            border: 1px solid #30363d;
-            border-radius: 16px;
-            padding: 30px;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lora', serif;
+      font-weight: 400;
+      line-height: 1.7;
+    }
 
-        /* Pop-up de Insight */
-        .insight-badge {
-            position: absolute;
-            top: -15px; right: 20px;
-            background: var(--accent);
-            color: #000;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: bold; font-size: 0.75rem;
-            cursor: help;
-            box-shadow: 0 4px 10px rgba(42, 157, 143, 0.3);
-        }
+    header.hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 40px 60px;
+      text-align: center;
+    }
 
-        .insight-popup {
-            display: none;
-            background: #21262d;
-            border: 1px solid var(--accent);
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: #b1bac4;
-        }
+    .hero-label {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-teal);
+      margin-bottom: 20px;
+    }
 
-        .section-sep {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px dashed #30363d;
-        }
+    h1 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 30px;
+    }
 
-        footer { margin-top: 100px; font-family: 'JetBrains Mono', monospace; color: var(--dim-text); }
-        
-        /* Ajustes de Embeds */
-        .flourish-embed, .tableauPlaceholder { width: 100% !important; border-radius: 8px; overflow: hidden; }
-    </style>
+    h1 em { font-style: italic; color: var(--accent-pink); }
+
+    .hero-intro {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: var(--text-light);
+    }
+
+    main { max-width: 1000px; margin: 0 auto; padding: 0 40px 100px; }
+
+    /* Secciones con narrativa */
+    .viz-section {
+      padding: 100px 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .viz-section.visible { opacity: 1; transform: translateY(0); }
+
+    .section-num {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--accent-pink);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: -40px;
+      margin-left: -20px;
+    }
+
+    h2 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 40px;
+      border-left: 3px solid var(--accent-org);
+      padding-left: 20px;
+    }
+
+    .chart-card {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 15px 40px var(--shadow);
+      position: relative;
+    }
+
+    /* Badge para Pop-ups/Notas */
+    .insight-btn {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: var(--accent-pink);
+      color: white;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.7rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .popup-text {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background: #fff9fa;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      border: 1px solid var(--accent-pink);
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px;
+      font-family: 'Quicksand', sans-serif;
+      color: var(--text-light);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .section-num { font-size: 3rem; margin-bottom: 0; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <div class="hero-meta">// SYSTEM_STATUS: OPERATIONAL | RECONSTRUCTION_PERIOD: 2024-2026</div>
-    <h1 class="hero-title">💓 El pulso del movimiento</h1>
-</header>
+  <header class="hero">
+    <div class="hero-label">Ingeniería de Datos Personales</div>
+    <h1>La reconstrucción del <em>movimiento</em></h1>
+    <p class="hero-intro">
+      Un análisis de dos años de actividad física, donde cada sensor cuenta una historia de consistencia, fallas técnicas y la búsqueda de un nuevo equilibrio personal.
+    </p>
+  </header>
 
-<div class="dashboard-grid">
+  <main>
 
-    <div class="chart-container">
-        <div class="insight-badge" onclick="togglePopup('p1')">VIEW_TECHNICAL_INSIGHTS</div>
-        
+    <article class="viz-section">
+      <div class="section-num">01</div>
+      <h2>La persistencia del registro</h2>
+      <p class="description">
+        No todo es perfecto. Este gráfico muestra la evolución de mis BPM y registros calóricos. Los huecos y picos no son falta de esfuerzo, sino la fricción entre el agua de la pileta y el sensor del Apple Watch.
+      </p>
+      <div class="chart-card">
+        <button class="insight-btn" onclick="toggleNote('n1')">VER NOTA TÉCNICA</button>
         <div class='tableauPlaceholder' id='viz1774634145691'>
             <object class='tableauViz' style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
                 <param name='name' value='EvolucionderegistrosenappleWatch&#47;Hoja7' />
-                <param name='toolbar' value='yes' /><param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' /><param name='display_count' value='yes' />
-                <param name='language' value='es-ES' /><param name='filter' value='publish=yes' />
+                <param name='toolbar' value='yes' />
             </object>
         </div>
-
-        <div id="p1" class="insight-popup">
-            <strong>ANALYSIS_LOG:</strong><br>
-            • <b>Anomalía de Sensor (Semanas 46, 54, 61):</b> Los picos de consumo calórico coinciden con sesiones de natación. El ruido óptico por refracción del agua invalida los registros crudos.<br>
-            • <b>Respuesta Cardiovascular:</b> Estabilidad en BPM promedio excepto en la ventana post-donación de sangre (Semana 61), donde se aprecia una compensación hemodinámica.
+        <div id="n1" class="popup-text">
+          <b>Insight:</b> El ruido en el sensor se intensifica en los meses de verano. La semana 61 marca un hito: la recuperación post-donación de sangre.
         </div>
-    </div>
+      </div>
+    </article>
 
-    <div class="chart-container">
-        <div class="insight-badge" onclick="togglePopup('p2')">ACTIVITY_DISTRIBUTION_LOG</div>
-        
+    <article class="viz-section">
+      <div class="section-num">02</div>
+      <h2>La estructura de la semana</h2>
+      <p class="description">
+        ¿Cómo se reparte el esfuerzo? Aquí comparamos el Gimnasio con el Deporte. Los Lunes son el motor de fuerza, mientras que los Domingos son el espacio de recreación y fútbol.
+      </p>
+      <div class="chart-card">
         <div class='tableauPlaceholder' id='viz1774639847143'>
             <object class='tableauViz' style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
                 <param name='name' value='Dist_deact_semanal&#47;Hoja1' />
                 <param name='toolbar' value='yes' />
             </object>
         </div>
+      </div>
+    </article>
 
-        <div id="p2" class="insight-popup">
-            <strong>DISTRIBUTION_LOG:</strong><br>
-            El análisis por día de la semana revela una especialización funcional: <b>Lunes</b> como pilar de gimnasio y <b>Domingos</b> dominados por deporte recreativo/fútbol. La consistencia es la métrica clave de este periodo.
-        </div>
-    </div>
-
-    <div class="chart-container">
-        <div class="insight-badge" onclick="togglePopup('p3')">ESTACIONALIDAD_LOG</div>
+    <article class="viz-section">
+      <div class="section-num">03</div>
+      <h2>Intensidad estacional</h2>
+      <p class="description">
+        Este mapa de calor revela cuándo se consolidó el hábito. De los meses de reconstrucción a la constancia absoluta en 2026.
+      </p>
+      <div class="chart-card">
         <div class="flourish-embed flourish-chart" data-src="visualisation/28235722">
-            <script src="https://public.flourish.studio/resources/embed.js"></script>
+          <script src="https://public.flourish.studio/resources/embed.js"></script>
         </div>
-        <div id="p3" class="insight-popup">
-            Mapa de calor de actividad acumulada. Permite identificar los meses de "reconstrucción" donde el volumen de entrenamiento escaló progresivamente.
-        </div>
-    </div>
+      </div>
+    </article>
 
-    <div class="chart-container">
-        <div class="insight-badge" onclick="togglePopup('p4')">MONTHLY_BREAKDOWN</div>
+    <article class="viz-section">
+      <div class="section-num">04</div>
+      <h2>Balance de Disciplinas</h2>
+      <p class="description">
+        Cierre del análisis mensual. La transición de un entrenamiento enfocado solo en "moverse" a uno diseñado por objetivos de ingeniería corporal.
+      </p>
+      <div class="chart-card">
         <div class="flourish-embed flourish-chart" data-src="visualisation/28253778">
-            <script src="https://public.flourish.studio/resources/embed.js"></script>
+          <script src="https://public.flourish.studio/resources/embed.js"></script>
         </div>
-        <div id="p4" class="insight-popup">
-            Comparativa mensual de las 3 dimensiones principales: Fuerza (Gym), Aeróbico (Deporte) y Recuperación.
-        </div>
-    </div>
+      </div>
+    </article>
 
-</div>
+  </main>
 
-<footer>
-    // END_OF_REPORT | ARGENTINA_2026 | ENG_DATA_SCIENCE_VISUALIZATION
-</footer>
+  <footer>
+    <p>Visualización de Datos · Presentación Final · 2026</p>
+  </footer>
 
-<script>
-    function togglePopup(id) {
-        var p = document.getElementById(id);
-        p.style.display = (p.style.display === "block") ? "none" : "block";
+  <script>
+    // Animación de entrada
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.viz-section').forEach(s => observer.observe(s));
+
+    // Toggle de notas
+    function toggleNote(id) {
+      const n = document.getElementById(id);
+      n.style.display = (n.style.display === "block") ? "none" : "block";
     }
 
-    // Scripts de carga de Tableau
-    function loadTableau(id) {
-        var divElement = document.getElementById(id);
-        var vizElement = divElement.getElementsByTagName('object')[0];
-        vizElement.style.width='100%'; vizElement.style.height=(divElement.offsetWidth*0.65)+'px';
-        var scriptElement = document.createElement('script');
-        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    // Carga de Tableau
+    function initViz(id) {
+      var divElement = document.getElementById(id);
+      var vizElement = divElement.getElementsByTagName('object')[0];
+      vizElement.style.width='100%';
+      vizElement.style.height=(divElement.offsetWidth*0.65)+'px';
+      var scriptElement = document.createElement('script');
+      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+      vizElement.parentNode.insertBefore(scriptElement, vizElement);
     }
-
-    loadTableau('viz1774634145691');
-    loadTableau('viz1774639847143');
-</script>
+    initViz('viz1774634145691');
+    initViz('viz1774639847143');
+  </script>
 
 </body>
 </html>
