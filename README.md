@@ -22,7 +22,7 @@ El sitio web está organizado de forma narrativa a través de 5 secciones princi
 
 ### 3. ¿Cómo se estructura la semana?
 * **Visualización:** Gráfico de distribución de actividades semanales (vía *Tableau Public*).
-* **Insight:** Revela los hábitos cronológicos. Los lunes se aprovecha la mañana por un esquema laboral vespertino, mientras que los domingos se consolidan fuertemente como el día predilecto para competir en el deporte.
+* **Insight:** Revela los hábitos cronológicos. Los lunes se aprovecha la mañana por un esquema laboral vespertino, mientras que los domingos se consolidan fuertemente como el día más elegido para jugar partidos.
 
 ### 4. ¿En qué días de la semana se concentra cada actividad?
 * **Visualización:** Dos gráficos de torta / componentes distribuidos en paralelo (vía *Datawrapper*).
@@ -31,9 +31,9 @@ El sitio web está organizado de forma narrativa a través de 5 secciones princi
 ### 5. ¿Se evidencian cambios?
 * **Visualización:** Gráfico de series temporales de variables fisiológicas (vía *Tableau Public*) con una sección interactiva de notas técnicas.
 * **Insights Clave Analizados:**
-  * **Ruido en la captura:** Huecos y anomalías debido a la fricción del agua en la pileta interfiriendo con el sensor del Apple Watch.
+  * **Ruido en la captura:** Huecos y anomalías debido a la fricción del agua en la pileta en días de natación interfiriendo con el sensor del Apple Watch.
   * **Respuesta Hemodinámica:** Elevación de pulsaciones promedio ligada a la recuperación fisiológica post-donación de sangre en marzo 2026 (Semana 61).
-  * **Eficiencia Metabólica:** Caída de 0,8 puntos en el consumo calórico hacia fines de 2025 ante un esfuerzo similar (BPM constantes), indicando una mejora cardiopulmonar previa al inicio de entrenamientos de resistencia.
+  * **Eficiencia Metabólica:** Caída de 0,8 puntos en el consumo calórico hacia fines de 2025 ante un esfuerzo similar (BPM constantes), indicando una mejora cardiopulmonar alegable al inicio de entrenamientos de resistencia.
 
 ---
 
