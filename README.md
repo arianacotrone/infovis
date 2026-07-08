@@ -47,13 +47,3 @@ Para lograr un diseño minimalista, editorial y fluido, se emplearon las siguien
   * **Tableau Public:** Inserción asincrónica mediante API (`viz_v1.js`) con cálculo automático de proporciones dinámicas de aspecto de los contenedores.
   * **Datawrapper:** Embebido mediante `iframes` responsivos con comunicación de eventos de altura de ventana mediante scripts.
 
----
-
-## 📂 Estructura del Repositorio
-
-```text
-├── tp-individual/
-│   ├── index.html           # Archivo HTML principal (Dashboard unificado)
-│   ├── actividad semanal.png # Visualización complementaria tipo Beeswarm
-│   └── corazon.png          # Icono del sitio (Favicon)
-└── README.md                # Documentación del proyecto
