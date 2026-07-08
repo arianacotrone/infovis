@@ -1,51 +1,59 @@
-# 📊 Visualización de Información: Análisis de Entrenamientos y Métricas de Salud (Apple Watch)
+# 💓 El pulso del movimiento (Ingeniería de Datos Personales)
 
-Este repositorio contiene el proyecto final para la materia **Visualización de Información** de la **Maestría en Ciencia de Datos (ITBA)**. 
+Este repositorio contiene la entrega final para la materia de **Visualización de Datos (2026)**. El proyecto consiste en un dashboard web interactivo que analiza poco más de un año de actividad física personal, buscando entender la consistencia, las anomalías, el balance de las disciplinas y la optimización del rendimiento metabólico.
 
-El objetivo del proyecto es explorar, mediante visualizaciones interactivas en la web, el impacto físico de mis entrenamientos diarios (Fútbol, Gimnasio y Tenis) registrados de forma manual, cruzándolos con las métricas de salud automatizadas que recopila mi **Apple Watch** a lo largo del año 2024.
+La aplicación cruza registros manuales de asistencia a entrenamientos con las métricas de salud automatizadas recopiladas por el **Apple Watch**.
 
----
-
-## 🎯 Objetivos del Análisis
-
-El dashboard busca responder a tres preguntas fundamentales a través de la exploración visual:
-1. **Gasto Energético:** ¿Cómo varía el gasto calórico activo promedio según el tipo de actividad física y el día de la semana?
-2. **Esfuerzo Cardiovascular:** ¿Qué disciplinas demandan una mayor frecuencia cardíaca máxima y promedio?
-3. **Impacto en el Descanso:** ¿Existe alguna relación visible entre los días de entrenamiento intenso y la duración o eficiencia del sueño posterior?
+🔗 **Puedes ver el Dashboard interactivo en vivo aquí:** [https://arianacotrone.github.io/infovis/tp-individual/index.html]
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## 📊 Estructura del Dashboard y Preguntas de Negocio
 
-El proyecto está construido íntegramente del lado del cliente como una aplicación web estática, utilizando las siguientes herramientas:
-* **HTML5 y CSS3** para la estructura y el diseño de la interfaz.
-* **Bootstrap 5** para lograr una maquetación limpia, moderna y un diseño responsivo.
-* **D3.js (v7)** para la manipulación del DOM basada en datos y la creación de los gráficos dinámicos e interactivos.
-* **JavaScript (ES6+)** para la lógica de carga, filtrado y procesamiento de los datasets en formato CSV.
+El sitio web está organizado de forma narrativa a través de 5 secciones principales:
+
+### 1. ¿Hay cierta intensidad estacional?
+* **Visualización:** Mapa de calor interactivo (vía *Flourish*) + Gráfico *Beeswarm Plot* integrado como imagen (`actividad semanal.png`).
+* **Insight:** Evidencia la densidad del entrenamiento semanal. Expone anomalías lógicas como las vacaciones en junio 2025 o bajas de densidad debido al crudo invierno, demostrando que la regularidad base se sostiene en la mayor parte del año entre 1 y 3 días semanales.
+
+### 2. ¿Cómo se equilibra la actividad?
+* **Visualización:** Gráfico de flujo estacional / áreas (vía *Flourish*).
+* **Insight:** Muestra la correlación de compensación entre disciplinas; cuando la frecuencia de partidos de fútbol cae, las sesiones de gimnasio ganan un protagonismo estratégico.
+
+### 3. ¿Cómo se estructura la semana?
+* **Visualización:** Gráfico de distribución de actividades semanales (vía *Tableau Public*).
+* **Insight:** Revela los hábitos cronológicos. Los lunes se aprovecha la mañana por un esquema laboral vespertino, mientras que los domingos se consolidan fuertemente como el día predilecto para competir en el deporte.
+
+### 4. ¿En qué días de la semana se concentra cada actividad?
+* **Visualización:** Dos gráficos de torta / componentes distribuidos en paralelo (vía *Datawrapper*).
+* **Insight:** Comparativa directa que demuestra la naturaleza de las agendas: el gimnasio se concentra con fuerza durante los días hábiles, mientras que el deporte (fútbol) se adueña de los fines de semana.
+
+### 5. ¿Se evidencian cambios?
+* **Visualización:** Gráfico de series temporales de variables fisiológicas (vía *Tableau Public*) con una sección interactiva de notas técnicas.
+* **Insights Clave Analizados:**
+  * **Ruido en la captura:** Huecos y anomalías debido a la fricción del agua en la pileta interfiriendo con el sensor del Apple Watch.
+  * **Respuesta Hemodinámica:** Elevación de pulsaciones promedio ligada a la recuperación fisiológica post-donación de sangre en marzo 2026 (Semana 61).
+  * **Eficiencia Metabólica:** Caída de 0,8 puntos en el consumo calórico hacia fines de 2025 ante un esfuerzo similar (BPM constantes), indicando una mejora cardiopulmonar previa al inicio de entrenamientos de resistencia.
 
 ---
 
-## 📊 Visualizaciones Incluidas
+## 🛠️ Tecnologías e Integraciones Utilizadas
 
-El dashboard interactivo cuenta con tres secciones principales coordinadas entre sí:
-* **Gráfico de Barras Agrupadas / Apiladas:** Muestra la distribución del gasto calórico por tipo de entrenamiento y días de la semana.
-* **Gráfico de Dispersión (Scatter Plot):** Correlaciona la frecuencia cardíaca promedio vs. la máxima, permitiendo identificar la intensidad por disciplina mediante canales de color.
-* **Línea de Tiempo / Mapa de Calor:** Permite observar los patrones de sueño (horas de descanso) al contrastar los días con actividad física frente a los días de sedentarismo.
+Para lograr un diseño minimalista, editorial y fluido, se emplearon las siguientes herramientas:
+
+* **Estructura y Estilos:** HTML5 semántico y CSS3 personalizado usando fuentes modernas (*Quicksand* y *Lora*) con transiciones animadas dinámicas activadas por el desplazamiento (`IntersectionObserver`).
+* **Integración de Dashboards No-Code / Low-Code:**
+  * **Flourish:** Para los gráficos de densidad y flujos interactivos.
+  * **Tableau Public:** Inserción asincrónica mediante API (`viz_v1.js`) con cálculo automático de proporciones dinámicas de aspecto de los contenedores.
+  * **Datawrapper:** Embebido mediante `iframes` responsivos con comunicación de eventos de altura de ventana mediante scripts.
 
 ---
 
 ## 📂 Estructura del Repositorio
 
 ```text
-├── css/
-│   └── styles.css          # Estilos personalizados y paleta de colores
-├── data/
-│   ├── entrenamientos.csv  # Registro manual de Fútbol, Gimnasio y Tenis (2024)
-│   └── apple_watch.csv     # Métricas de salud (Calorías, FC, Sueño) exportadas
-├── js/
-│   ├── main.js             # Lógica general y carga de datos comunes
-│   ├── barras.js           # Implementación del gráfico de gasto calórico en D3
-│   ├── scatter.js          # Implementación del gráfico de frecuencia cardíaca
-│   └── sueno.js            # Implementación de la visualización de descanso
-├── index.html              # Estructura del Dashboard e integración con Bootstrap
-└── README.md               # Documentación del proyecto
+├── tp-individual/
+│   ├── index.html           # Archivo HTML principal (Dashboard unificado)
+│   ├── actividad semanal.png # Visualización complementaria tipo Beeswarm
+│   └── corazon.png          # Icono del sitio (Favicon)
+└── README.md                # Documentación del proyecto
