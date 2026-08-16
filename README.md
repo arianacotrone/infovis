@@ -1,5 +1,7 @@
 # 💓 El pulso del movimiento (Ingeniería de Datos Personales)
 
+Este proyecto muestra cómo integro varias herramientas de visualización (Flourish, Tableau Public, Datawrapper) en un panel único, con storytelling guiado por preguntas concretas — **el mismo enfoque que se usaría para armar un reporte para un cliente de sus propias métricas de negocio**, en vez de un dashboard genérico con gráficos sueltos. 
+
 Este repositorio contiene la entrega final para la materia de **Visualización de Datos (2026)**. El proyecto consiste en un dashboard web interactivo que analiza poco más de un año de actividad física personal, buscando entender la consistencia, las anomalías, el balance de las disciplinas y la optimización del rendimiento metabólico.
 
 La aplicación cruza registros manuales de asistencia a entrenamientos con las métricas de salud automatizadas recopiladas por el **Apple Watch**.
